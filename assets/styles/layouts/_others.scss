@@ -1,0 +1,38 @@
+.others {
+    padding: 1em;
+    text-align: left;
+    // first part : select first p if 2 p in container, second part : select second p if 2 p in container with +
+    p:first-of-type:nth-last-of-type(2),
+    p:first-of-type:nth-last-of-type(2) + p {
+        margin-bottom: 1em;
+    }
+    ul {
+        .list {
+            list-style: inside;
+            list-style-type: " - ";
+        }
+        padding-bottom: 1em;
+    }
+    
+    .two-columns {
+        .title {
+            padding: 1rem;
+            font-weight: bold;
+        }
+    }
+    
+    /* *****************************************************************
+    DESKTOP
+    ***************************************************************** */
+
+    @media screen and (min-width: $min-width) {
+        .two-columns {
+            column-count: 2;
+            column-gap: 70%; 
+            .two-columns li {
+                break-inside: avoid; 
+            }
+        }
+    }
+    
+}

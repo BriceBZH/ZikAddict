@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau genre{% endblock %}
+
+{% block body %}
+    <main class="forms_bis" id="container">
+        <h2>Ajouter un genre</h2>
+
+        {{ include('genre/_form.html.twig') }}
+
+        <a href="{{ path('profile', {'idUser': app.request.query.get('idUser')}) }}">Retour au profil</a>
+    </main>
+{% endblock %}

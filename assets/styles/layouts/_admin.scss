@@ -1,0 +1,89 @@
+.admin {
+    .form_button {
+        background-color: $lightGrey;
+        border-radius: 15px;
+        padding: 0.5em;
+        text-decoration: none;
+        border: 1px solid $black;
+        margin: 0.5em;
+        &:hover {
+            background-color: $blueElectrik;
+            color: $white;
+        }
+    }
+    .flash_notice {
+        text-align: center;
+        background-color: $orange;
+        color: $black;
+        border: 1px solid $black;
+        width: 50%;
+        border-radius: 10px;
+        display: block; /* Utiliser display: block pour que chaque message soit sur une nouvelle ligne */
+        padding: 1em; /* Pour espacer les messages entre eux */
+        margin: 0 auto;
+    }
+
+    .flash_error {
+        text-align: center;
+        background-color: $red;
+        color: $black;
+        border: 1px solid $black;
+        width: 50%;
+        border-radius: 10px;
+        display: block; /* Utiliser display: block pour que chaque message soit sur une nouvelle ligne */
+        padding: 1em; /* Pour espacer les messages entre eux */
+        margin: 0 auto;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 1em;
+        .menu-li {
+            width: 80%;
+            border: 1px solid $black;
+            border-radius: 15px;
+            text-align: center;
+            &:hover {
+                background-color: $orange;
+                cursor: pointer;
+            }
+            #li_icons {
+                display: inline;
+                position: absolute;
+                right: 10em;
+                background-color: $black;
+                width: 1em;
+                color: $white;
+            }       
+        }
+        .menu-table {
+            width: 80%; // Définir une largeur pour le tableau
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid $black;
+            border-radius: 15px;
+            background-color: $white;
+            margin-bottom: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        .medias_admin {
+            width: 20%;
+        }
+    }
+    
+
+    @media screen and (min-width: $min-width) {
+        ul {
+            .menu-li {
+                #li_icons {
+                    right: 20em;
+                }
+            }
+        }
+    }
+}

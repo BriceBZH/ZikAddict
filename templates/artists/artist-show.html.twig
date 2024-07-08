@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{artist.name}}{% endblock %}
+
+{% block body %}
+    <main class="cards">
+        <h2>
+            Liste des albums de {{artist.getName()}}
+        </h2>
+        <div class="modal-container">
+            <div class="overlay modal-trigger"></div>
+            <div class="modal-content">
+            </div>
+        </div>
+        <p class="text">{{artist.description}}</p>
+        <ul>
+            {% for album in albums %}
+                <li data-image-url="{{ asset('build/images/' ~ album.media.url) }}" data-image-alt="{{ album.media.alt }}">
+                    <article>
+                        <h3>{{album.getTitle()}}</h3>
+                        <p>{{album.year}}</p>
+                        {% if app.user.userIdentifier is defined %}
+                            {% set currentRoute = app.request.attributes.get('_route') %}
+                            {% set param = app.request.attributes.get('idArtist') %}
+                            <img src="{{ asset('build/images/img_formats.png')}}" class="image_collection modal-trigger" alt="collection" data-target="album{{loop.index}}" >
+                            <article class="formats album{{loop.index}}">
+                                <h4>Liste des formats pour l'album {{album.getTitle()}}</h4>
+                                {% for format in album.formats %}
+                                    <p>
+                                    {{format.libelle}}
+                                    <a href="{{ path('add_collection', {idAlbum: album.id, idUser: app.user.id, returnUrl: currentRoute, idFormat: format.id, parametre: param}) }}">
+                                        <img src="{{ asset('build/images/collection.gif')}}" alt="Ajouter à la collection" title="Ajouter à la collection" class="pictures" >
+                                    </a>
+                                    <a href="{{ path('add_search', {idAlbum: album.id, idUser: app.user.id, returnUrl: currentRoute, idFormat: format.id, parametre: param}) }}">
+                                        <img src="{{ asset('build/images/search.gif')}}" alt="Ajouter aux recherches" class="pictures" title="Ajouter aux recherches"  >
+                                    </a>
+                                    </p>
+                                {% endfor %}
+                            </article>
+                        {% endif %}
+                        <p><a href="{{ path('album', {idAlbum: album.id}) }}" class="link">Plus</a>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}

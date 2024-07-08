@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Crédits{% endblock %}
+
+{% block body %}
+    <main class="others" id="container">
+        <h2>Crédits des images</h2>
+        <ul class="two-columns">
+            {% for media in medias %}
+                <li><a href="{{media.urlSource}}">{{media.alt}}</a></<li>
+            {% endfor %}
+        </ul>
+        <h2>Remerciements</h2>
+        <p>Nous tenons à exprimer notre gratitude envers les contributeurs qui ont partagé les images utilisées sur notre site web. Ces images ont été utilisées dans le cadre d'un projet de formation et ne sont pas destinées à un usage commercial. Nous reconnaissons et apprécions le travail des auteurs et nous nous engageons à respecter leurs droits d'auteur. Si vous êtes l'auteur d'une des images utilisées et que vous souhaitez que celle-ci soit retirée, veuillez nous contacter et nous la retirerons immédiatement.</p>
+    </main>
+{% endblock %}
